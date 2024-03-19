@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            margin-top: 0;
+            color: #0066cc;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 20px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Report</h1>
+        <form action="/" method="post">
+            <label for="city">Enter city:</label>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        {% if weather_info %}
+            <h2>Weather for {{ weather_info.city }}</h2>
+            <p>Temperature: {{ weather_info.temp_celsius }}°C / {{ weather_info.temp_fahrenheit }}°F</p>
+            <p>Feels Like: {{ weather_info.feels_like_celsius }}°C / {{ weather_info.feels_like_fahrenheit }}°F</p>
+            <p>Wind Speed: {{ weather_info.wind_speed }} m/s</p>
+            <p>Humidity: {{ weather_info.humidity }}%</p>
+            <p>Description: {{ weather_info.description }}</p>
+            <p>Sunrise Time: {{ weather_info.sunrise_time }}</p>
+            <p>Sunset Time: {{ weather_info.sunset_time }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
